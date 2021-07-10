@@ -26,16 +26,25 @@ function createWindow () {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 let appIcon = null
+let contextMenu = null
 
 app.whenReady().then(() => {
-  appIcon = new Tray(path.join(__dirname, 'resources/linux.png'))
-  const contextMenu = Menu.buildFromTemplate([
-    { label: 'Item1', type: 'radio' },
-    { label: 'Item2', type: 'radio' }
-  ])
+  if (process.platform === 'linux') {
+    appIcon = new Tray(path.join(__dirname, 'resources/linux.png'))
+    contextMenu = Menu.buildFromTemplate([
+      { label: 'Linux', type: 'radio' },
+      { label: 'Quit', type: 'radio' }
+    ])
+  } else if (process.platform === 'darwin') {
+    appIcon = new Tray(path.join(__dirname, 'resources/osx-tray.png'))
+    contextMenu = Menu.buildFromTemplate([
+      { label: 'OSX', type: 'radio' },
+      { label: 'Quit', type: 'radio' }
+    ])
+  }
 
   // Make a change to the context menu
-  contextMenu.items[1].checked = false
+  contextMenu.items[0].checked = false
 
   // Call this again for Linux because we modified the context menu
   appIcon.setContextMenu(contextMenu)
