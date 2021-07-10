@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self'">
+  <title>electron-quick-start</title>
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+
+<body>
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="./index.html" role="tab">Services</a>
+      <a class="nav-item nav-link" id="nav-settings-tab" data-toggle="tab" href="./settings.html"
+        role="tab">Settings</a>
+      <a class="nav-item nav-link" id="nav-scratch-tab" data-toggle="tab" href="./scratch.html" role="tab">Scratch</a>
+      <a class="nav-item nav-link active" id="nav-about-tab" data-toggle="tab" href="#" role="tab">About</a>
+    </div>
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
+      <div class="container">
+        <!-- Add content here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- You can also require other files to run in this process -->
+  <script>if (typeof module === 'object') { window.module = module; module = undefined; }</script>
+  <script src="./node_modules/jquery/dist/jquery.js"></script>
+  <script src="./node_modules/popper.js/dist/umd/popper.js"></script>
+  <script src="./node_modules/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="./view.js"></script>
+  <script src="./renderer.js"></script>
+  <script>if (window.module) module = window.module;</script>
+</body>
+
+</html>

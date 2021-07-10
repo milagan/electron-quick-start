@@ -12,26 +12,34 @@
 <body>
   <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#" role="tab">Services</a>
+      <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="./index.html" role="tab">Services</a>
       <a class="nav-item nav-link" id="nav-settings-tab" data-toggle="tab" href="./settings.html" role="tab">Settings</a>
-      <a class="nav-item nav-link" id="nav-scratch-tab" data-toggle="tab" href="./scratch.html" role="tab">Scratch</a>
+      <a class="nav-item nav-link active" id="nav-scratch-tab" data-toggle="tab" href="#" role="tab">Scratch</a>
       <a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="./about.html" role="tab">About</a>
     </div>
   </nav>
   <div class="tab-content" id="nav-tabContent">
-    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+    <div class="tab-pane fade show active" id="nav-scratch" role="tabpanel" aria-labelledby="nav-scratch-tab">
       <div class="container">
         <br>
         <div class="card">
           <div class="card-header">
-            Versions
+            jQuery Testing
           </div>
           <div class="card-body">
-            <ul class="list-group">
-              <li class="list-group-item">Node.js: <span id="node-version"></span></li>
-              <li class="list-group-item">Chromium: <span id="chrome-version"></span></li>
-              <li class="list-group-item">Electron: <span id="electron-version"></li>
-            </ul>
+            <p>Click the button to increase the counter</p>
+            <h4 id="click-counter"></h4>
+            <button class="btn btn-success" id="countbtn">Click here</button>
+          </div>
+        </div>
+        <br>
+        <div class="card">
+          <div class="card-header">
+            Notification Testing
+          </div>
+          <div class="card-body">
+            <p>Click the button to show the notification</p>
+            <button class="btn btn-info" id="notificationbtn">Show Notification</button>
           </div>
         </div>
       </div>
