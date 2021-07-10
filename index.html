@@ -1,29 +1,57 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <title>Hello World!</title>
-    <link rel = "stylesheet" href = "./bower_components/bootstrap/dist/css/bootstrap.min.css" />
-  </head>
-  <body>
-    <div class = "container">
-      <h1>This page is using Bootstrap and jQuery!</h1>
-      <h3 id = "click-counter"></h3>
-      <button class = "btn btn-success" id = "countbtn">Click here</button>
 
-      <p>We are using Node.js <span id="node-version"></span></p>
-      <p>Chromium <span id="chrome-version"></span></p>
-      <p>and Electron <span id="electron-version"></span></p>
+<head>
+  <meta charset="UTF-8">
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+  <title>Hello World!</title>
+  <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css" />
+</head>
 
-      <button class = "btn btn-info" id = "notificationbtn">Show Notification</button>
+<body>
+  <div class="container">
+    <br>
+    <div class="card" style="width: 18rem;">
+      <div class="card-header">
+        Versions
+      </div>
+      <div class="card-body">
+        <ul class="list-group">
+          <li class="list-group-item">Node.js: <span id="node-version"></span></li>
+          <li class="list-group-item">Chromium: <span id="chrome-version"></span></li>
+          <li class="list-group-item">Electron: <span id="electron-version"></li>
+        </ul>
+      </div>
+    </div>
+    <br>
+    <div class="card" style="width: 18rem;">
+      <div class="card-header">
+        jQuery Testing
+      </div>
+      <div class="card-body">
+        <p>Click the button to increase the counter</p>
+        <h4 id="click-counter"></h4>
+        <button class="btn btn-success" id="countbtn">Click here</button>
+      </div>
+    </div>
+    <br>
+    <div class="card" style="width: 18rem;">
+      <div class="card-header">
+        Notification Testing
+      </div>
+      <div class="card-body">
+        <p>Click the button to show the notification</p>
+        <button class="btn btn-info" id="notificationbtn">Show Notification</button>
+      </div>
+    </div>
 
-      <script src = "./view.js" ></script>
+    <script src="./view.js"></script>
 
-   </div>
+  </div>
 
-    <!-- You can also require other files to run in this process -->
-    <script src="./renderer.js"></script>
-  </body>
+  <!-- You can also require other files to run in this process -->
+  <script src="./renderer.js"></script>
+</body>
+
 </html>

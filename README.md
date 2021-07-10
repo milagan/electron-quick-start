@@ -8,6 +8,7 @@
 ## Building and Running the Application
 ```bash
 npm install
+bower install
 npm run start
 ```
 
