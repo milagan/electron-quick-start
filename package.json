@@ -6,9 +6,9 @@
   "scripts": {
     "clean": "rimraf dist",
     "start": "electron .",
-    "bundle:x64": "electron-packager . --platform linux --arch x64 --out dist/",
-    "deb:x64": "electron-installer-debian --src dist/electron-quick-start-linux-x64/ --arch amd64 --config config.json",
-    "build": "npm run clean && npm run bundle:x64 && npm run deb:x64"
+    "bundle:linux": "electron-packager . --platform linux --arch x64 --out dist/",
+    "setup:linux": "electron-installer-debian --src dist/electron-quick-start-linux-x64/ --arch amd64 --config config-linux.json",
+    "build:linux": "npm run clean && npm run bundle:linux && npm run setup:linux"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [

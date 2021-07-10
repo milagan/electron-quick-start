@@ -28,7 +28,7 @@ function createWindow () {
 let appIcon = null
 
 app.whenReady().then(() => {
-  appIcon = new Tray('./linux.png')
+  appIcon = new Tray(path.join(__dirname, 'resources/linux.png'))
   const contextMenu = Menu.buildFromTemplate([
     { label: 'Item1', type: 'radio' },
     { label: 'Item2', type: 'radio' }
