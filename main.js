@@ -12,9 +12,9 @@ if (process.platform === 'win32' && squirrel.handleCommand(app, cmd)) {
 }
 
 let isQuiting = false
-let mainWindow = null
-let appIcon = null
-let contextMenu = null
+let mainWindow
+let appIcon
+let contextMenu
 
 function createWindow() {
 
