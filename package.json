@@ -1,0 +1,32 @@
+{
+  "name": "electron-quick-start",
+  "version": "1.0.0",
+  "description": "A minimal Electron application",
+  "main": "main.js",
+  "scripts": {
+    "clean": "rimraf dist",
+    "start": "electron .",
+    "bundle:x64": "electron-packager . --platform linux --arch x64 --out dist/",
+    "deb:x64": "electron-installer-debian --src dist/electron-quick-start-linux-x64/ --arch amd64 --config config.json",
+    "build": "npm run clean && npm run bundle:x64 && npm run deb:x64"
+  },
+  "repository": "https://github.com/electron/electron-quick-start",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^13.1.4",
+    "electron-installer-debian": "*",
+    "electron-packager": "^13.0.0",
+    "rimraf": "^2.6.2"
+  },
+  "dependencies": {
+    "jquery": "^3.6.0"
+  }
+}
