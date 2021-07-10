@@ -3,6 +3,14 @@ const {app, Menu, Tray, BrowserWindow} = require('electron')
 const url = require('url')
 const path = require('path')
 
+const args = require('./args')
+const squirrel = require('./squirrel')
+
+const cmd = args.parseArguments(app, process.argv.slice(1)).squirrelCommand
+if (process.platform === 'win32' && squirrel.handleCommand(app, cmd)) {
+  return
+}
+
 function createWindow () {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -39,6 +47,12 @@ app.whenReady().then(() => {
     appIcon = new Tray(path.join(__dirname, 'resources/osx-tray.png'))
     contextMenu = Menu.buildFromTemplate([
       { label: 'OSX', type: 'radio' },
+      { label: 'Quit', type: 'radio' }
+    ])
+  } else if (process.platform === 'win32') {
+    appIcon = new Tray(path.join(__dirname, 'resources/win32.ico'))
+    contextMenu = Menu.buildFromTemplate([
+      { label: 'Windows', type: 'radio' },
       { label: 'Quit', type: 'radio' }
     ])
   }

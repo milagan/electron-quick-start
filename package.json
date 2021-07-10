@@ -1,20 +1,23 @@
 {
   "name": "electron-quick-start",
   "productName": "electron-quick-start",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
     "clean": "rimraf dist",
     "start": "electron .",
+    "bundle:win32": "electron-packager . --platform=win32 --arch=x64 --out=dist/ --icon resources/win32.ico",
     "bundle:linux": "electron-packager . --platform=linux --arch=x64 --out=dist/",
     "bundle:osx": "electron-packager . --platform=darwin --arch=x64 --out=dist/",
-    "setup:linux": "electron-installer-debian --src dist/electron-quick-start-linux-x64/ --arch amd64 --config config-linux.json",
+    "setup:win32": "electron-installer-windows --src dist/electron-quick-start-win32-x64/ --config config-win32.json",
+    "setup:linux": "electron-installer-debian --src dist/electron-quick-start-linux-x64/ --config config-linux.json",
     "setup:osx": "electron-installer-dmg dist/electron-quick-start-darwin-x64/electron-quick-start.app dist/installers/electron",
+    "build:win32": "npm run clean && npm run bundle:win32 && npm run setup:win32",
     "build:linux": "npm run clean && npm run bundle:linux && npm run setup:linux",
     "build:osx": "npm run clean && npm run bundle:osx && npm run setup:osx"
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://github.com/milagan/electron-quick-start",
   "keywords": [
     "Electron",
     "quick",
@@ -30,9 +33,12 @@
     "rimraf": "^2.6.2"
   },
   "dependencies": {
-    "jquery": "^3.6.0"
+    "fs-plus": "^3.1.1",
+    "jquery": "^3.6.0",
+    "yargs": "^15.1.0"
   },
   "optionalDependencies": {
+    "electron-installer-windows": "*",
     "electron-installer-debian": "*",
     "electron-installer-dmg": "*"
   }
