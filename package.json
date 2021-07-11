@@ -1,7 +1,7 @@
 {
   "name": "electron-quick-start",
   "productName": "electron-quick-start",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "@types/popper.js": "^1.11.0",
+    "auto-launch": "^5.0.5",
     "bootstrap": "^5.0.2",
     "fs-plus": "^3.1.1",
     "jquery": "^3.6.0",

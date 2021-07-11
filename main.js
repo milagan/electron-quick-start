@@ -1,6 +1,7 @@
 // Modules to control application life and create native browser window
 const electron = require("electron")
 const { app, Menu, Tray, BrowserWindow } = electron
+const AutoLaunch = require('auto-launch');
 const url = require('url')
 const path = require('path')
 
@@ -77,6 +78,14 @@ function createWindow() {
 // Some APIs can only be used after this event occurs.
 
 app.whenReady().then(() => {
+  let autoLaunch = new AutoLaunch({
+    name: 'electron-quick-start',
+    path: app.getPath('exe'),
+  });
+  autoLaunch.isEnabled().then((isEnabled) => {
+    if (!isEnabled) autoLaunch.enable();
+  });
+
   if (process.platform === 'linux') {
     appIcon = new Tray(path.join(__dirname, 'resources/linux.png'))
   } else if (process.platform === 'darwin') {
