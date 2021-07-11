@@ -4,16 +4,22 @@
 <head>
   <meta charset="UTF-8">
   <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self'">
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self'">
   <title>electron-quick-start</title>
   <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="./resources/css/style.css" />
 </head>
 
 <body>
+  <div class="applogo">
+    <img class="appimage" src="./resources/images/ckplogo.png">
+  </div>
   <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
       <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#" role="tab">Services</a>
-      <a class="nav-item nav-link" id="nav-settings-tab" data-toggle="tab" href="./settings.html" role="tab">Settings</a>
+      <a class="nav-item nav-link" id="nav-settings-tab" data-toggle="tab" href="./settings.html"
+        role="tab">Settings</a>
       <a class="nav-item nav-link" id="nav-scratch-tab" data-toggle="tab" href="./scratch.html" role="tab">Scratch</a>
       <a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="./about.html" role="tab">About</a>
     </div>
@@ -24,22 +30,88 @@
         <br>
         <div class="card">
           <div class="card-header">
-            Versions
+            Edge Router Dashboard
           </div>
           <div class="card-body">
-            <ul class="list-group">
-              <li class="list-group-item">Node.js: <span id="node-version"></span></li>
-              <li class="list-group-item">Chromium: <span id="chrome-version"></span></li>
-              <li class="list-group-item">Electron: <span id="electron-version"></li>
-            </ul>
+            <h3 class="card-title">app-dashboard</h3>
+            <p class="card-text">Tool for showing edge router http/https/tcp services</p>
+            <a href="https://app-dashboard.checkpoint-service.com" target="_blank" class="btn btn-success">Launch Dashboard</a>
           </div>
         </div>
+        <br>
+        <div class="card">
+          <div class="card-header">
+            Docker Dashboard
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">app-docker</h3>
+            <p class="card-text">Tool for managing docker containers</p>
+            <a href="https://app-docker.checkpoint-service.com" target="_blank" class="btn btn-success">Launch Dashboard</a>
+          </div>
+        </div>
+        <br>
+        <div class="card">
+          <div class="card-header">
+            Remote Access Dashboard
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">app-ssh</h3>
+            <p class="card-text">Tool for remotely accessing devices via SSH/Telnet</p>
+            <a href="https://app-ssh.checkpoint-service.com" target="_blank" class="btn btn-primary">App Page</a>
+          </div>
+        </div>
+        <br>
+        <div class="card">
+          <div class="card-header">
+            Visualization Tool
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">app-visualtization-tool</h3>
+            <p class="card-text">Tool for capturing data from Wirama and FastTrack RFID readers</p>
+            <a href="https://app-visualization-tool.checkpoint-service.com" target="_blank" class="btn btn-primary">App Page</a>
+            <a href="https://app-driver.checkpoint-service.com" target="_blank" class="btn btn-secondary">Driver Page</a>
+          </div>
+        </div>
+        <br>
+        <div class="card">
+          <div class="card-header">
+            Monitoring Tool
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">app-monitoring-tool</h3>
+            <p class="card-text">Tool for monitoring DSM, HIGD, and NEO devices from different sites</p>
+            <a href="http://app-monitoring-tool.checkpoint-service.com" target="_blank" class="btn btn-primary">App Page</a>
+          </div>
+        </div>
+        <br>
+        <div class="card">
+          <div class="card-header">
+            Capture Tool
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">app-capture-tool</h3>
+            <p class="card-text">Tool for capturing data from Kathrein, RFControl, and Impinj readers</p>
+            <a href="http://app-capture-tool.checkpoint-service.com" target="_blank" class="btn btn-primary">App Page</a>
+          </div>
+        </div>
+        <br>
+        <div class="card">
+          <div class="card-header">
+            EVOLVE-Store Dashboard
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">app-evolvestore-dashboard</h3>
+            <p class="card-text">Dashboard for Wirama Machine Learning demo</p>
+            <a href="http://app-evolvestore-dashboard.checkpoint-service.com" target="_blank" class="btn btn-primary">App Page</a>
+          </div>
+        </div>
+        <br><br>
       </div>
     </div>
   </div>
 
   <!-- You can also require other files to run in this process -->
-  <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+  <script>if (typeof module === 'object') { window.module = module; module = undefined; }</script>
   <script src="./node_modules/jquery/dist/jquery.js"></script>
   <script src="./node_modules/popper.js/dist/umd/popper.js"></script>
   <script src="./node_modules/bootstrap/dist/js/bootstrap.js"></script>

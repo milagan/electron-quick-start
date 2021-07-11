@@ -1,5 +1,6 @@
 // Modules to control application life and create native browser window
-const { app, Menu, Tray, BrowserWindow } = require('electron')
+const electron = require("electron")
+const { app, Menu, Tray, BrowserWindow } = electron
 const url = require('url')
 const path = require('path')
 
@@ -11,10 +12,14 @@ if (process.platform === 'win32' && squirrel.handleCommand(app, cmd)) {
   return
 }
 
+let width = 400;
+let height = 700;
 let isQuiting = false
 let mainWindow
 let appIcon
 let contextMenu
+let margin_x = 0
+let margin_y = 0
 
 function createWindow() {
 
@@ -22,10 +27,11 @@ function createWindow() {
 
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 400,
-    height: 600,
-    resizable: true,
+    width: width,
+    height: height,
+    resizable: false,
     icon: iconImage,
+    show: false,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
@@ -59,6 +65,11 @@ function createWindow() {
     console.log('Main Window shown')
   });
 
+  mainWindow.once('ready-to-show', () => {
+    alignWindow()
+    mainWindow.show()
+  })
+
 }
 
 // This method will be called when Electron has finished
@@ -78,14 +89,14 @@ app.whenReady().then(() => {
     {
       label: 'Show Application',
       click: function () {
-        mainWindow.show();
+        mainWindow.show()
       }
     },
     {
       label: 'Quit',
       click: function () {
         isQuiting = true;
-        app.quit();
+        app.quit()
       }
     }
   ])
@@ -94,7 +105,6 @@ app.whenReady().then(() => {
   // Call this again for Linux because we modified the context menu
   appIcon.setContextMenu(contextMenu)
   appIcon.on('click', function (event) {
-    console.log('App icon clicked')
     mainWindow.show()
   })
 
@@ -116,3 +126,57 @@ app.on('window-all-closed', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+function alignWindow() {
+  const position = calculateWindowPosition();
+  mainWindow.setBounds({
+    width: width,
+    height: height,
+    x: position.x,
+    y: position.y
+  });
+}
+
+function calculateWindowPosition() {
+  const screenBounds = electron.screen.getPrimaryDisplay().size;
+  const trayBounds = appIcon.getBounds();
+
+  //where is the icon on the screen?
+  let trayPos = 4; // 1:top-left 2:top-right 3:bottom-left 4.bottom-right
+  trayPos = trayBounds.y > screenBounds.height / 2 ? trayPos : trayPos / 2;
+  trayPos = trayBounds.x > screenBounds.width / 2 ? trayPos : trayPos - 1;
+
+  let DEFAULT_MARGIN = { x: margin_x, y: margin_y };
+
+  //calculate the new window position
+  switch (trayPos) {
+    case 1: // for TOP - LEFT
+      x = Math.floor(trayBounds.x + DEFAULT_MARGIN.x + trayBounds.width / 2);
+      y = Math.floor(trayBounds.y + DEFAULT_MARGIN.y + trayBounds.height / 2);
+      break;
+
+    case 2: // for TOP - RIGHT
+      x = Math.floor(
+        trayBounds.x - width - DEFAULT_MARGIN.x + trayBounds.width / 2
+      );
+      y = Math.floor(trayBounds.y + DEFAULT_MARGIN.y + trayBounds.height / 2);
+      break;
+
+    case 3: // for BOTTOM - LEFT
+      x = Math.floor(trayBounds.x + DEFAULT_MARGIN.x + trayBounds.width / 2);
+      y = Math.floor(
+        trayBounds.y - height - DEFAULT_MARGIN.y + trayBounds.height / 2
+      );
+      break;
+
+    case 4: // for BOTTOM - RIGHT
+      x = Math.floor(
+        trayBounds.x - width - DEFAULT_MARGIN.x + trayBounds.width / 2
+      );
+      y = Math.floor(
+        trayBounds.y - height - DEFAULT_MARGIN.y + trayBounds.height / 2
+      );
+      break;
+  }
+
+  return { x: x, y: y };
+}

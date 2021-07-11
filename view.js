@@ -6,16 +6,22 @@ $('#countbtn').on('click', () => {
     $('#click-counter').text(count)
 })
 
+function showNotification(textTitle, textBody, textClickMessage) {
+    new Notification(textTitle, { body: textBody })
+        .onclick = () => console.log(textClickMessage)
+}
+
 $('#notificationbtn').on('click', () => {
     const NOTIFICATION_TITLE = 'Title'
     const NOTIFICATION_BODY = 'Notification from the Renderer process. Click to log to console.'
     const CLICK_MESSAGE = 'Notification clicked'
 
-    new Notification(NOTIFICATION_TITLE, { body: NOTIFICATION_BODY })
+    showNotification(NOTIFICATION_TITLE, { body: NOTIFICATION_BODY })
         .onclick = () => console.log(CLICK_MESSAGE)
 })
 
 $('#powershellbtn').on('click', () => {
+    showNotification("Hyper-V Installation", "Installation started...", "")
     $('#powershell').empty();
     $('<br><small>Powershell started...</small>').appendTo('#powershell');
 
@@ -30,10 +36,19 @@ $('#powershellbtn').on('click', () => {
         $('<br><small>' + data + '</small>').appendTo('#powershell');
     });
     child.stderr.on("data", function (data) {
+        showNotification("Hyper-V Installation Error", data, "")
         $('<br><small>' + data + '</small>').appendTo('#powershell');
     });
     child.on("exit", function () {
+        showNotification("Hyper-V Installation", "Installation completed...", "")
         $('<br><small>Powershell ended...</small>').appendTo('#powershell');
     });
     child.stdin.end(); //end input
 })
+
+var shell = require('electron').shell;
+//open links externally by default
+$(document).on('click', 'a[href^="http"]', function(event) {
+    event.preventDefault();
+    shell.openExternal(this.href);
+});

@@ -8,9 +8,13 @@
     content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self'">
   <title>electron-quick-start</title>
   <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="./resources/css/style.css" />
 </head>
 
 <body>
+  <div class="applogo">
+    <img class="appimage" src="./resources/images/ckplogo.png">
+  </div>
   <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
       <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="./index.html" role="tab">Services</a>
@@ -23,7 +27,19 @@
   <div class="tab-content" id="nav-tabContent">
     <div class="tab-pane fade show active" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
       <div class="container">
-        <!-- Add content here -->
+        <br>
+        <div class="card">
+          <div class="card-header">
+            Versions
+          </div>
+          <div class="card-body">
+            <ul class="list-group">
+              <li class="list-group-item">Node.js: <span id="node-version"></span></li>
+              <li class="list-group-item">Chromium: <span id="chrome-version"></span></li>
+              <li class="list-group-item">Electron: <span id="electron-version"></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
