@@ -15,6 +15,9 @@ function extractSquirrelCommand (options) {
   if (options['squirrel-obsolete']) {
     return 'obsolete'
   }
+  if (options['squirrel-firstrun']) {
+    return 'firstrun'
+  }
 }
 
 function parseArguments (app, args) {
@@ -30,6 +33,9 @@ function parseArguments (app, args) {
     })
     .option('squirrel-obsolete', {
       desribe: 'Used by Squirrel to obsolete the app'
+    })
+    .option('squirrel-firstrun', {
+      desribe: 'Used by Squirrel to first run the app'
     })
     .argv
 

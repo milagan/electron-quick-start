@@ -73,6 +73,7 @@ function removeShortcuts (callback) {
 
 const handleCommand = (app, cmd) => {
   switch (cmd) {
+    case 'firstrun':
     case 'install':
       createShortcuts(() => {
         app.quit()
