@@ -25,7 +25,46 @@
   <div class="tab-content" id="nav-tabContent">
     <div class="tab-pane fade show active" id="nav-settings" role="tabpanel" aria-labelledby="nav-settings-tab">
       <div class="container">
-        <!-- Add content here -->
+        <br>
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="pills-hyperv-tab" data-bs-toggle="pill" data-bs-target="#pills-hyperv" type="button" role="tab" aria-controls="pills-hyperv" aria-selected="true">Hyper-V</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-iotedge-tab" data-bs-toggle="pill" data-bs-target="#pills-iotedge" type="button" role="tab" aria-controls="pills-iotedge" aria-selected="false">IoT Edge</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-deploy-tab" data-bs-toggle="pill" data-bs-target="#pills-deploy" type="button" role="tab" aria-controls="pills-deploy" aria-selected="false">Deploy</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-provision-tab" data-bs-toggle="pill" data-bs-target="#pills-provision" type="button" role="tab" aria-controls="pills-provision" aria-selected="false">Provision</button>
+          </li>
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade show active" id="pills-hyperv" role="tabpanel" aria-labelledby="pills-hyperv-tab">
+            <br>
+            <div class="card">
+              <div class="card-header">
+                Hyper-V Installation
+              </div>
+              <div class="card-body">
+                <p>Click the button to launch Hyper-V installation</p>
+                <button class="btn btn-danger" id="hyperv-btn">Launch Hyper-V Installation</button>
+                <div id="hyperv-status"></div>
+                <br>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="pills-iotedge" role="tabpanel" aria-labelledby="pills-iotedge-tab">
+            IoT Edge
+          </div>
+          <div class="tab-pane fade" id="pills-deploy" role="tabpanel" aria-labelledby="pills-deploy-tab">
+            Deploy
+          </div>
+          <div class="tab-pane fade" id="pills-provision" role="tabpanel" aria-labelledby="pills-provision-tab">
+            Provision
+          </div>
+        </div>
       </div>
     </div>
   </div>

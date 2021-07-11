@@ -16,14 +16,13 @@ $('#notificationbtn').on('click', () => {
     const NOTIFICATION_BODY = 'Notification from the Renderer process. Click to log to console.'
     const CLICK_MESSAGE = 'Notification clicked'
 
-    showNotification(NOTIFICATION_TITLE, { body: NOTIFICATION_BODY })
-        .onclick = () => console.log(CLICK_MESSAGE)
+    showNotification(NOTIFICATION_TITLE, NOTIFICATION_BODY, CLICK_MESSAGE)
 })
 
-$('#powershellbtn').on('click', () => {
+$('#hyperv-btn').on('click', () => {
     showNotification("Hyper-V Installation", "Installation started...", "")
-    $('#powershell').empty();
-    $('<br><small>Powershell started...</small>').appendTo('#powershell');
+    $('#hyperv-status').empty();
+    $('<br><small>Hyper-V installation started...</small>').appendTo('#hyperv-status');
 
     const path = require('path');
     const policyCommand = 'Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass';
@@ -33,15 +32,15 @@ $('#powershellbtn').on('click', () => {
     var spawn = require("child_process").spawn, child;
     child = spawn("powershell.exe", [fullCommand]);
     child.stdout.on("data", function (data) {
-        $('<br><small>' + data + '</small>').appendTo('#powershell');
+        $('<br><small>' + data + '</small>').appendTo('#hyperv-status');
     });
     child.stderr.on("data", function (data) {
         showNotification("Hyper-V Installation Error", data, "")
-        $('<br><small>' + data + '</small>').appendTo('#powershell');
+        $('<br><small>' + data + '</small>').appendTo('#hyperv-status');
     });
     child.on("exit", function () {
         showNotification("Hyper-V Installation", "Installation completed...", "")
-        $('<br><small>Powershell ended...</small>').appendTo('#powershell');
+        $('<br><small>Hyper-V installation ended...</small>').appendTo('#hyperv-status');
     });
     child.stdin.end(); //end input
 })
