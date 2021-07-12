@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self'">
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self'">
   <title>electron-quick-start</title>
   <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="./resources/css/style.css" />
@@ -28,16 +29,39 @@
         <br>
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
           <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="pills-hyperv-tab" data-bs-toggle="pill" data-bs-target="#pills-hyperv" type="button" role="tab" aria-controls="pills-hyperv" aria-selected="true">Hyper-V</button>
+            <button class="nav-link active" id="pills-hyperv-tab" data-bs-toggle="pill" data-bs-target="#pills-hyperv"
+              type="button" role="tab" aria-controls="pills-hyperv" aria-selected="true">
+              Hyper-V
+              <span class="badge rounded-pill bg-success">Success</span>
+            </button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-iotedge-tab" data-bs-toggle="pill" data-bs-target="#pills-iotedge" type="button" role="tab" aria-controls="pills-iotedge" aria-selected="false">IoT Edge</button>
+            <button class="nav-link" id="pills-iotedge-tab" data-bs-toggle="pill" data-bs-target="#pills-iotedge"
+              type="button" role="tab" aria-controls="pills-iotedge" aria-selected="false">
+              Install
+              <span class="badge rounded-pill bg-danger">Failed</span>
+            </button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-deploy-tab" data-bs-toggle="pill" data-bs-target="#pills-deploy" type="button" role="tab" aria-controls="pills-deploy" aria-selected="false">Deploy</button>
+            <button class="nav-link" id="pills-deploy-tab" data-bs-toggle="pill" data-bs-target="#pills-deploy"
+              type="button" role="tab" aria-controls="pills-deploy" aria-selected="false">
+              Deploy
+              <span class="badge rounded-pill bg-info">In-Progress</span>
+            </button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-provision-tab" data-bs-toggle="pill" data-bs-target="#pills-provision" type="button" role="tab" aria-controls="pills-provision" aria-selected="false">Provision</button>
+            <button class="nav-link" id="pills-provision-tab" data-bs-toggle="pill" data-bs-target="#pills-provision"
+              type="button" role="tab" aria-controls="pills-provision" aria-selected="false">
+              Provision
+              <span class="badge rounded-pill bg-light">Todo</span>
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-firewall-tab" data-bs-toggle="pill" data-bs-target="#pills-firewall"
+              type="button" role="tab" aria-controls="pills-firewall" aria-selected="false">
+              Firewall
+              <span class="badge rounded-pill bg-light">Todo</span>
+            </button>
           </li>
         </ul>
         <div class="tab-content" id="pills-tabContent">
@@ -49,28 +73,77 @@
               </div>
               <div class="card-body">
                 <p>Click the button to launch Hyper-V installation</p>
-                <button class="btn btn-danger" id="hyperv-btn">Launch Hyper-V Installation</button>
+                <button class="btn btn-success" id="hyperv-btn">Launch Hyper-V Installation</button>
                 <div id="hyperv-status"></div>
                 <br>
               </div>
             </div>
           </div>
           <div class="tab-pane fade" id="pills-iotedge" role="tabpanel" aria-labelledby="pills-iotedge-tab">
-            IoT Edge
+            <br>
+            <div class="card">
+              <div class="card-header">
+                Azure IoT Edge Installation
+              </div>
+              <div class="card-body">
+                <p>Click the button to launch IoT-Edge installation</p>
+                <button class="btn btn-success" id="iotedge-btn">Launch IoT-Edge Installation</button>
+                <div id="iotedge-status"></div>
+                <br>
+              </div>
+            </div>
           </div>
           <div class="tab-pane fade" id="pills-deploy" role="tabpanel" aria-labelledby="pills-deploy-tab">
-            Deploy
+            <br>
+            <div class="card">
+              <div class="card-header">
+                EFLOW VM Deployment
+              </div>
+              <div class="card-body">
+                <p>Click the button to launch EFLOW VM deployment</p>
+                <button class="btn btn-success" id="deploy-btn">Launch EFLOW Deployment</button>
+                <div id="deploy-status"></div>
+                <br>
+              </div>
+            </div>
           </div>
           <div class="tab-pane fade" id="pills-provision" role="tabpanel" aria-labelledby="pills-provision-tab">
-            Provision
+            <br>
+            <div class="card">
+              <div class="card-header">
+                EFLOW Provisioning
+              </div>
+              <div class="card-body">
+                <label for="exampleFormControlInput1" class="form-label">IoT Edge Connection String</label>
+                <input id="connection-string" class="form-control" type="text" placeholder="HostName=uniqlo-iothub.azure-devices.net;DeviceId=neo-hsm-sample;SharedAccessKey=ezAsrKH4HxzNoxWcEoNaN5rB8Sm7v91W8Cn4V8vDS/scSv1wvNnWsdgb35NznjTq2qCvKS1T3Ob/J9MMVFZKHw==">
+                <br>
+                <p>Click the button to launch EFLOW provisioning</p>
+                <button class="btn btn-success" id="provision-btn">Launch EFLOW Provisioning</button>
+                <div id="provision-status"></div>
+                <br>
+              </div>
+            </div>
           </div>
+          <div class="tab-pane fade" id="pills-firewall" role="tabpanel" aria-labelledby="pills-firewall-tab">
+            <br>
+            <div class="card">
+              <div class="card-header">
+                DNS/Firewall/Port-Forwarding Setup
+              </div>
+              <div class="card-body">
+                <p>Click the button to launch EFLOW network setup</p>
+                <button class="btn btn-success" id="firewall-btn">Launch EFLOW Network</button>
+                <div id="firewall-status"></div>
+                <br>
+              </div>
+            </div>
         </div>
       </div>
     </div>
   </div>
 
   <!-- You can also require other files to run in this process -->
-  <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+  <script>if (typeof module === 'object') { window.module = module; module = undefined; }</script>
   <script src="./node_modules/jquery/dist/jquery.js"></script>
   <script src="./node_modules/popper.js/dist/umd/popper.js"></script>
   <script src="./node_modules/bootstrap/dist/js/bootstrap.js"></script>

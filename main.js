@@ -13,7 +13,7 @@ if (process.platform === 'win32' && squirrel.handleCommand(app, cmd)) {
   return
 }
 
-let width = 400;
+let width = 500;
 let height = 700;
 let isQuiting = false
 let mainWindow
